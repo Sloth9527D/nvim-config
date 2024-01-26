@@ -1,10 +1,4 @@
-local status, clangd = pcall(require, "clangd_extensions")
-if not status then
-  vim.notify("Not Found clangd_extensions")
-  return
-end
-
-local opts = {
+return {
     inlay_hints = {
         inline = vim.fn.has("nvim-0.10") == 1,
         -- Options other than `highlight' and `priority' only work
@@ -66,7 +60,3 @@ local opts = {
         border = "none",
     },
 }
-
-require("clangd_extensions").setup(opts)
-require("clangd_extensions.inlay_hints").setup_autocmd()
-require("clangd_extensions.inlay_hints").set_inlay_hints()

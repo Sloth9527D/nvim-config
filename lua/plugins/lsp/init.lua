@@ -6,11 +6,11 @@ local handlers = {
       local options ={
         lua_ls = require("plugins.lsp.config.lua"),
         pyright = require("plugins.lsp.config.pyright"),
+        clangd = require("plugins.lsp.config.clangd"),
       }
       local opts = options[server_name]
       require("lspconfig")[server_name].setup({opts})
   end,
-  -- Next, you can provide a dedicated handler for specific servers.
 }
 
 return {
@@ -26,14 +26,34 @@ return {
       ensure_installed = {
         "lua_ls",
         "clangd",
-        "pyright"
+        "pyright",
+        "cmake",
+        "rust_analyzer"
       },
       handlers = handlers
     }
   },
-  { "neovim/nvim-lspconfig"},
+  {
+    "neovim/nvim-lspconfig",
+    keys = {
+      { 'rn', '<cmd>lua vim.lsp.buf.rename()<CR>' },
+      { 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
+      { 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>' },
+      { 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>' },
+      { 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>' },
+      { 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>' },
+      { 'gr', '<cmd>lua vim.lsp.buf.references()<CR>' },
+      { 'go', '<cmd>lua vim.diagnostic.open_float()<CR>' },
+      { 'gp', '<cmd>lua vim.diagnostic.goto_prev()<CR>' }, 
+      { 'gn', '<cmd>lua vim.diagnostic.goto_next()<CR>' },
+      { '<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>'}
+    }
+  },
   { 
     "williamboman/mason.nvim",
+    keys = {
+      { '<leader>m', '<cmd>Mason<CR>' }
+    },
     opts = {
       ui = {
         icons ={
@@ -44,11 +64,11 @@ return {
       }
     }
   },
-  {-- C++ LSP
-    "p00f/clangd_extensions.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("plugins.lsp.config.clangd")
-    end
-  }, 
+  -- { -- C++ LSP
+  --   "p00f/clangd_extensions.nvim",
+  --   event = "VeryLazy",
+  --   -- config = function()
+  --   --   require("")
+  --   -- end
+  -- }, 
 }

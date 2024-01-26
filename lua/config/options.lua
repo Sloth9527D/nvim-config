@@ -36,7 +36,7 @@ vim.o.writebackup = false
 vim.o.autoread = true
 
 vim.o.clipboard = 'unnamedplus'
-vim.o.mouse = 'a'
+vim.o.mouse = 'niv'
 vim.o.timeoutlen = 300
 
 vim.o.pumheight = 10

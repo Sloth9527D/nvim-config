@@ -5,12 +5,11 @@ return {
     "akinsho/nvim-bufferline.lua",
     event = "VeryLazy",
     keys = {
-        { "<leader>p", "<Cmd>BufferLinePick<CR>" },
-        { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>" },
-        { "<leader>k", "<Cmd>BufferLineCycleNext<CR>" },
-        { "<A-d><A-c>", "<Cmd>bdelete %<CR>"},
-        { "<A-d><A-p>", "<Cmd>BufferLinePickClose<CR>"},
-        { "<A-d><A-o>", "<Cmd>BufferLineCloseOthers<CR>"}
+        { "<leader>p", "<cmd>BufferLinePick<CR>" },
+        { "<leader>j", "<cmd>BufferLineCyclePrev<CR>" },
+        { "<leader>k", "<cmd>BufferLineCycleNext<CR>" },
+        { "zz", "<cmd>bdelete! %<CR>"},
+        { "zo", "<cmd>BufferLineCloseOthers<CR>"}
     },
     opts = {
         options = {
