@@ -16,12 +16,7 @@ local handlers = {
 return {
   {
     "williamboman/mason-lspconfig.nvim",
-    event = { "BufEnter" },
-    patterns = {"*.[(lua)|(cpp)|(c)|(h)|(py)]"},
-    dependencies = {
-      "williamboman/mason.nvim",
-      "neovim/nvim-lspconfig"
-    },
+    event = "VeryLazy",
     opts = {
       ensure_installed = {
         "lua_ls",
@@ -35,6 +30,8 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    event = { "LspAttach" },
+    patterns = {"*.[(lua)|(cpp)|(c)|(h)|(py)]"},
     keys = {
       { 'rn', '<cmd>lua vim.lsp.buf.rename()<CR>' },
       { 'ca', '<cmd>lua vim.lsp.buf.code_action()<CR>' },
@@ -64,11 +61,4 @@ return {
       }
     }
   },
-  -- { -- C++ LSP
-  --   "p00f/clangd_extensions.nvim",
-  --   event = "VeryLazy",
-  --   -- config = function()
-  --   --   require("")
-  --   -- end
-  -- }, 
 }

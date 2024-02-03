@@ -10,6 +10,7 @@
 2. [git](https://git-scm.com/)
 3. [node.js](https://nodejs.org/en)
 4. [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+5. [ripgrep](https://github.com/BurntSushi/ripgrep/releases)
 
 # setup
 
